@@ -1,0 +1,18 @@
+code {
+  white-space: pre-wrap;
+}
+
+.element-list {
+  li {
+    cursor: pointer;
+
+    &.active {
+      color: var(--rs-c-primary);
+    }
+  }
+}
+
+.configurator{
+  background: var(--rs-c-gray-1);
+  height: 300px;
+}

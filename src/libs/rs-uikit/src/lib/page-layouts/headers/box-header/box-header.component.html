@@ -1,0 +1,40 @@
+<div class="header-box"
+     [ngClass]="{
+       'has-menu': menuEntries?.length > 0
+     }">
+    <header class="rs-l-flex rs-l-flex--center-y rs-s-margin--xl--bottom">
+        <div class="rs-l-flex rs-l-flex--center-y rs-l-flex__item--stretch">
+            <h1 class="rs-s-margin--sm--right">
+                @if (icon) {
+                    <span nz-icon [nzType]="icon" nzTheme="outline"
+                          class="icon">
+                    </span>
+                }
+                {{ title }}
+            </h1>
+            <div class="text-mute item-type"></div>
+        </div>
+    </header>
+
+    <div class="rs-l-flex">
+        <div class="left-col rs-s-margin--md--bottom">
+            <ng-content></ng-content>
+        </div>
+
+        <div class="right-col statistics rs-l-flex">
+            @if (actions.length > 0) {
+                <div class="actions rs-l-flex rs-l-flex--center">
+                    <rs-ui-actions-button
+                        [item]="item" [actions]="actions"
+                        buttonType="buttonRow">
+                    </rs-ui-actions-button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <rs-ui-tab-bar-menu
+        [menuEntries]="menuEntries"
+        (activate)="activate.next($event)">
+    </rs-ui-tab-bar-menu>
+</div>

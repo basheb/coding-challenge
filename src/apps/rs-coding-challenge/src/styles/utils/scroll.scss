@@ -1,0 +1,52 @@
+.rs-scroll{
+    overflow: auto;
+
+    &--x{
+        overflow-x: auto;
+        overflow-y: initial;
+    }
+
+    &--y{
+        overflow-x: initial;
+        overflow-y: auto;
+    }
+
+    &--snap-x{
+        scroll-snap-type: x proximity;
+        scroll-behavior: smooth;
+    }
+
+    &--snap-y{
+        scroll-snap-type: y proximity;
+        scroll-behavior: smooth;
+    }
+
+    &__item-snap--start{
+        scroll-snap-align: start;
+    }
+
+    &__item-snap--center{
+        scroll-snap-align: center;
+    }
+
+    &__item-snap--end{
+        scroll-snap-align: end;
+    }
+}
+
+.rs-scrollbar {
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--rs-c-gray-7);
+        border-radius: var(--rs-c-border-radius);
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--rs-c-gray-2);
+        border-radius: var(--rs-c-border-radius);
+    }
+}

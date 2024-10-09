@@ -1,0 +1,58 @@
+@import "../../../../node_modules/ng-zorro-antd/ng-zorro-antd.less";
+
+@theme: default;
+
+// The prefix to use on all css classes from ant.
+@ant-prefix: ant;
+
+// An override for the html selector for theme prefixes
+@html-selector: html;
+
+// -------- Colors -----------
+@primary-color: #2369F6;
+@info-color: @primary-color;
+@success-color: @green-6;
+@processing-color: @blue-6;
+@error-color: @red-5;
+@highlight-color: @red-5;
+@warning-color: @gold-6;
+@normal-color: #d9d9d9;
+@white: #fff;
+@black: #000;
+
+// Color used by default to control hover and active backgrounds and for
+// alert info backgrounds.
+@primary-1: color(colorPalette('@{primary-color}', 1)); // replace tint(@primary-color, 90%)
+@primary-2: color(colorPalette('@{primary-color}', 2)); // replace tint(@primary-color, 80%)
+@primary-3: color(colorPalette('@{primary-color}', 3)); // unused
+@primary-4: color(colorPalette('@{primary-color}', 4)); // unused
+@primary-5: color(colorPalette('@{primary-color}', 5)); // color used to control the text color in many active and hover states, replace tint(@primary-color, 20%)
+@primary-6: @primary-color; // color used to control the text color of active buttons, don't use, use @primary-color
+@primary-7: color(colorPalette('@{primary-color}', 7)); // replace shade(@primary-color, 5%)
+@primary-8: color(colorPalette('@{primary-color}', 8)); // unused
+@primary-9: color(colorPalette('@{primary-color}', 9)); // unused
+@primary-10: color(colorPalette('@{primary-color}', 10)); // unused
+
+
+@font-family: 'Inter';
+@code-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+@text-color: #1C1D21;
+@text-color-secondary: #70727B;
+@heading-color: #1C1D21;
+@text-color-dark: #1C1D21;
+@text-color-secondary-dark: #45474F;
+
+@border-radius-base: 4px;
+@border-radius-sm: @border-radius-base;
+
+// Descriptions
+@descriptions-title-margin-bottom: 10px;
+
+// Layout light theme
+@layout-sider-background-light: var(--rs-c-menu-background);
+@layout-trigger-background-light: var(--rs-c-menu-background);
+
+// Card
+// ---
+@card-padding-base: 16px;
+@card-head-padding: 16px;

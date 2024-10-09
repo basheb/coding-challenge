@@ -1,0 +1,25 @@
+.rs-color {
+    &--primary {
+        color: var(--rs-c-primary);
+    }
+
+    &--secondary {
+        color: var(--rs-c-secondary);
+    }
+
+    &--red {
+        color: var(--rs-c-red);
+    }
+
+    &--green {
+        color: var(--rs-c-green);
+    }
+
+    &--blue {
+        color: var(--rs-c-blue);
+    }
+
+    &--orange {
+        color: var(--rs-c-orange);
+    }
+}

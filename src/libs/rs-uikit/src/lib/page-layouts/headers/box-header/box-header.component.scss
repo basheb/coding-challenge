@@ -1,0 +1,41 @@
+.header-box {
+    width: calc(100%);
+    padding: var(--rs-s-xl);
+    background: var(--rs-c-gray-2);
+
+    &.has-menu {
+        padding-bottom: 0;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 0;
+
+        .icon {
+            margin-right: var(--rs-s-xxs);
+        }
+    }
+
+    .item-type {
+        font-size: 20px;
+    }
+
+    ::ng-deep h2 {
+        font-size: 20px;
+        font-weight: normal;
+    }
+
+    .left-col,
+    .right-col {
+        width: 50%;
+    }
+
+    .right-col {
+        justify-content: space-evenly;
+        align-self: center;
+    }
+
+    ::ng-deep nz-tabs-nav {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,12 @@
+.more-chevron{
+    position: absolute;
+    right: 0;
+    top: calc(50% - 7px);
+    color: var(--rs-c-gray-7) !important;
+}
+
+li{
+    &.has-children{
+        padding-right: 24px;
+    }
+}

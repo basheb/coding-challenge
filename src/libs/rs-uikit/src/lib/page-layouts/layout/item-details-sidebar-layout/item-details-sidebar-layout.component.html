@@ -1,0 +1,36 @@
+<nz-layout style="background: transparent">
+    <nz-content class="main-column">
+        @if (templates.get(LayoutComponentType.header)) {
+            <div class="header-wrapper">
+                <ng-container *ngTemplateOutlet="templates.get(LayoutComponentType.header)"></ng-container>
+            </div>
+        }
+
+        <section class="overview-content">
+            <!-- Main Content -->
+            <ng-container *ngIf="templates.get(LayoutComponentType.main)">
+                <ng-container *ngTemplateOutlet="templates.get(LayoutComponentType.main)"></ng-container>
+            </ng-container>
+        </section>
+    </nz-content>
+
+    <!-- Sidebar with multiple sections-->
+    @if (templates.get(LayoutComponentType.sidebar)) {
+        <nz-sider [nzWidth]="340" class="sidebar" [nzTheme]="'light'">
+            <div class="wrapper">
+                <div class="actions rs-l-flex rs-s-margin--lg--bottom">
+                    <rs-ui-actions-button
+                        [actions]="actions"
+                        [item]="item"
+                        [buttonType]="'buttonRow'"
+                        class="rs-l-flex__item--end-x">
+                    </rs-ui-actions-button>
+                </div>
+
+                <div class="sidebar-sections">
+                    <ng-container *ngTemplateOutlet="templates.get(LayoutComponentType.sidebar)"></ng-container>
+                </div>
+            </div>
+        </nz-sider>
+    }
+</nz-layout>

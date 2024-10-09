@@ -1,0 +1,15 @@
+nz-page-header{
+    padding-right: var(--rs-s-sm);
+    padding-left: 0;
+}
+
+.header-content{
+    ::ng-deep h1{
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 32px;
+        margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

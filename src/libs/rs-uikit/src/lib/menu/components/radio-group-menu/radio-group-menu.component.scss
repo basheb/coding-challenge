@@ -1,0 +1,33 @@
+:host{
+
+}
+
+nz-radio-group{
+    width: 100%;
+
+    ::ng-deep label{
+        background: transparent;
+        transform: translateY(1px);
+        border-bottom: none;
+
+        &.ant-radio-button-wrapper{
+            border-color: transparent;
+        }
+
+        &.ant-radio-button-wrapper-checked{
+            border-left-width: 1.02px;
+            border-radius: 4px 4px 0 0;
+            box-shadow: none !important;
+            font-weight: bold;
+            border-color: var(--rs-c-gray-5) !important;
+
+            &:before{
+                display: none;
+            }
+        }
+
+        &:before{
+            display: none !important;
+        }
+    }
+}

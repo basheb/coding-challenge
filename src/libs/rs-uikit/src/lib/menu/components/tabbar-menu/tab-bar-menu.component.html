@@ -1,0 +1,14 @@
+<nz-tabset (nzSelectChange)="onTabChange($event)"
+           [nzSelectedIndex]="activeEntryIndex">
+    @for(entry of menuEntries; track entry.properties.id){
+        <nz-tab [nzTitle]="tmpl">
+            <ng-template #tmpl>
+                @if(entry.properties.icon){
+                    <span nz-icon [nzType]="entry.properties.icon" nzTheme="outline"></span>
+                }
+                <ng-container *ngTemplateOutlet="entry.properties.templateRef"></ng-container>
+            </ng-template>
+        </nz-tab>
+    }
+
+</nz-tabset>

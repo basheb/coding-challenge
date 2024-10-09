@@ -1,0 +1,120 @@
+@if(allActions()?.length > 0){
+    <div class="options-button"
+         (click)="blurOnClick()">
+        <button *ngIf="buttonType() === 'textButton'"
+                nz-button
+                nzType="default"
+                nzTrigger="click"
+                nz-dropdown [nzDropdownMenu]="menu">
+            <span class="actions-icon " nz-icon nzType="more" nzTheme="outline"></span>
+            Actions
+            <span nz-icon nzType="down"></span>
+        </button>
+
+        <button *ngIf="buttonType() === 'primaryTextButton'"
+                nz-button
+                nzType="primary"
+                nzTrigger="click"
+                nz-dropdown [nzDropdownMenu]="menu">
+            <span class="actions-icon" nz-icon nzType="more" nzTheme="outline"></span>
+            Actions
+            <span nz-icon nzType="down"></span>
+        </button>
+
+        <button *ngIf="buttonType() === 'ellipsisButton'"
+                nz-button
+                nzType="text"
+                nzShape="circle"
+                nzTrigger="click"
+                nz-dropdown [nzDropdownMenu]="menu">
+            <span nz-icon nzType="ellipsis" nzTheme="outline"></span>
+        </button>
+
+        <button *ngIf="buttonType() === 'ellipsisIcon'"
+                nz-button
+                nzType="text"
+                nzTrigger="click"
+                nz-dropdown [nzDropdownMenu]="menu">
+            <i nz-icon nzType="ellipsis"></i>
+        </button>
+
+        <ng-container *ngIf="buttonType() === 'buttonRow' || buttonType() === 'buttonRowNonPrimary'">
+            <button *ngIf="secondaryAction()"
+                    nz-button
+                    rsUiClickDelegator [disableDelegator]="!!secondaryAction()?.click"
+                    [nzGhost]="buttonType() === 'buttonRow'"
+                    [nzType]="buttonType() === 'buttonRow' ? 'primary' : 'default'"
+                    [disabled]="secondaryAction()?.disabled && secondaryAction().disabled(item())"
+                    (click)="executeAction(secondaryAction())"
+                    class="btn rs-s-margin--xs--right"
+                    rsUiSetClassIfOnlyOneChild className="only-icon" selector=".anticon">
+                <ng-container *ngTemplateOutlet="secondaryAction().template"></ng-container>
+            </button>
+
+            <nz-button-group>
+                <button *ngIf="primaryAction()"
+                        nz-button
+                        rsUiClickDelegator [disableDelegator]="!!primaryAction()?.click"
+                        [disabled]="primaryAction()?.disabled && primaryAction().disabled(item())"
+                        (click)="executeAction(primaryAction())"
+                        [nzType]="buttonType() === 'buttonRow' ? 'primary' : 'default'"
+                        class="btn btn-primary"
+                        rsUiSetClassIfOnlyOneChild className="only-icon" selector=".anticon">
+                    <ng-container *ngTemplateOutlet="primaryAction().template"></ng-container>
+                </button>
+
+                <button *ngIf="getOtherActions().length > 0"
+                        nz-button
+                        [nzType]="buttonType() === 'buttonRow' ? 'primary' : 'default'"
+                        nzTrigger="click"
+                        nz-dropdown [nzDropdownMenu]="menu"
+                        class="btn btn-options"
+                        [disabled]="disabled()"
+                        rsUiSetClassIfOnlyOneChild className="only-icon" selector=".anticon">
+                    <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
+                </button>
+            </nz-button-group>
+        </ng-container>
+
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <ng-container *ngFor="let action of allActions(); last as isLast">
+                    <ng-container *ngIf="!action.hidden || !action.hidden(item())">
+                        <ng-container [ngSwitch]="action.type">
+                            <ng-container *ngSwitchCase="actionTypes.danger">
+                                <li nz-menu-item nzDanger [nzDisabled]="action.disabled && action.disabled(item())"
+                                    (click)="executeAction(action)"
+                                    rsUiClickDelegator [disableDelegator]="!!action.click || (action.disabled && action.disabled(item()))">
+                                    <ng-container
+                                        *ngTemplateOutlet="action.template; context: {$implicit: item()}">
+                                    </ng-container>
+                                    <div *ngIf="showTooltip(action, item())" class="rs-s-margin--xs--left"
+                                         nz-icon nzType="question-circle" nzTheme="outline"
+                                         [nz-tooltip]="getTooltip(action, item())">
+                                    </div>
+                                </li>
+                            </ng-container>
+
+                            <ng-container *ngSwitchCase="actionTypes.primary"></ng-container>
+                            <ng-container *ngSwitchCase="actionTypes.secondary"></ng-container>
+
+                            <ng-container *ngSwitchDefault>
+                                <li nz-menu-item [nzDisabled]="action.disabled && action.disabled(item())"
+                                    (click)="executeAction(action)"
+                                    rsUiClickDelegator [disableDelegator]="!!action.click || (action.disabled && action.disabled(item()))">
+                                    <ng-container
+                                        *ngTemplateOutlet="action.template; context: {$implicit: item()}">
+                                    </ng-container>
+                                    <div *ngIf="showTooltip(action, item())" class="rs-s-margin--xs--left"
+                                         nz-icon nzType="question-circle" nzTheme="outline"
+                                         [nz-tooltip]="getTooltip(action, item())">
+                                    </div>
+                                </li>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </ul>
+        </nz-dropdown-menu>
+    </div>
+}

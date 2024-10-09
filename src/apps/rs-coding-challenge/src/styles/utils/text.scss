@@ -1,0 +1,53 @@
+.rs-text-mute {
+    color: var(--rs-c-gray);
+}
+
+.rs-text-small {
+    font-size: small;
+}
+
+.rs-text-smaller {
+    font-size: smaller;
+}
+
+.rs-text {
+    &--muted {
+        color: var(--rs-c-gray);
+    }
+
+    &--loud {
+        font-weight: bold;
+    }
+
+    &--small {
+        font-size: small;
+    }
+
+    &--smaller {
+        font-size: smaller;
+    }
+
+    &--large {
+        font-size: large;
+    }
+
+    &--larger {
+        font-size: larger;
+    }
+
+    &--left {
+        text-align: left;
+    }
+
+    &--right {
+        text-align: right;
+    }
+
+    &--center {
+        text-align: center;
+    }
+
+    &--uppercase{
+        text-transform: uppercase;
+    }
+}

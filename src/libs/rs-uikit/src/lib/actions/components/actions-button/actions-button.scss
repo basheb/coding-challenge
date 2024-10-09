@@ -1,0 +1,39 @@
+:host {
+    .options-button {
+        display: inline-flex;
+    }
+}
+
+::ng-deep .btn-options .anticon {
+    margin-right: inherit;
+}
+
+::ng-deep .ant-dropdown-menu-item .anticon {
+    display: inline-block;
+    width: 15px;
+    text-align: center;
+    margin-right: var(--rs-s-xs);
+    color: var(--color-black-light);
+}
+
+::ng-deep .btn {
+    &:not(.only-icon) {
+        i,
+        .anticon {
+            margin-right: var(--rs-s-xs);
+        }
+
+        > .anticon + span, > span + .anticon {
+            margin-left: 0;
+        }
+    }
+}
+
+::ng-deep li a {
+    text-decoration: none !important;
+}
+
+.actions-icon {
+    margin-right: -4px;
+    margin-left: -4px;
+}

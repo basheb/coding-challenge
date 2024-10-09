@@ -1,0 +1,63 @@
+@switch (menuStyle) {
+    @case ('popover') {
+        <div class="menu popover">
+            <ul class="rs-no--list">
+                @for (entry of menuEntries; track entry.properties.id) {
+                    <li>
+                        @if (entry.hasSubEntries()) {
+                            <rs-ui-sidebar-menu-popover-entry
+                                [entry]="entry"
+                                [activeUrl]="getActiveUrl()"
+                                [upcomingUrl]="getUpcomingUrl()">
+                            </rs-ui-sidebar-menu-popover-entry>
+                        } @else {
+                            <rs-ui-sidebar-menu-entry
+                                class="no-active-border"
+                                [entry]="entry"
+                                [active]="entry.properties.active"
+                                [activeUrl]="getActiveUrl()"
+                                [upcomingUrl]="getUpcomingUrl()"
+                                (click)="activateEntry(entry)">
+                            </rs-ui-sidebar-menu-entry>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    @default {
+        <div class="menu">
+            <ul class="rs-no--list">
+                @for (entry of menuEntries; track entry.properties.id) {
+                    <li>
+                        <rs-ui-sidebar-menu-entry
+                            [entry]="entry"
+                            [active]="entry.properties.active"
+                            [activeUrl]="getActiveUrl()"
+                            [upcomingUrl]="getUpcomingUrl()"
+                            (click)="activateEntry(entry)">
+                        </rs-ui-sidebar-menu-entry>
+
+                        <div
+                            [hidden]="!entry.properties.subEntries || (!entry.isActive(getActiveUrl()) && !entry.hasActiveSubEntry(getActiveUrl()))"
+                            class="dropdown-entries">
+                            <ul class="rs-no--list">
+                                @for (subEntry of entry.properties.subEntries; track subEntry.properties.id) {
+                                    <li>
+                                        <rs-ui-sidebar-menu-entry
+                                            [entry]="subEntry"
+                                            [active]="entry.properties.active"
+                                            [activeUrl]="getActiveUrl()"
+                                            [upcomingUrl]="getUpcomingUrl()"
+                                            (click)="activateEntry(entry)">
+                                        </rs-ui-sidebar-menu-entry>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+}

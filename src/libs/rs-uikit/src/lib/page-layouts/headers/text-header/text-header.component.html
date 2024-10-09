@@ -1,0 +1,17 @@
+<nz-page-header nzBackIcon="arrow-left" (nzBack)="onBackClick()">
+    <nz-page-header-title>
+        <!-- Overview Title with optional add on-->
+        <div class="rs-l-flex rs-l-flex--center-y header-content">
+            <ng-content></ng-content>
+        </div>
+    </nz-page-header-title>
+
+    <nz-page-header-extra>
+        <!-- Overview action button -->
+        <rs-ui-actions-button
+            [buttonType]="'buttonRow'"
+            [actions]="actions()"
+            [item]="item()">
+        </rs-ui-actions-button>
+    </nz-page-header-extra>
+</nz-page-header>

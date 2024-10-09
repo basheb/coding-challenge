@@ -1,0 +1,13 @@
+:host {
+    ::ng-deep nz-tabs-nav {
+        button {
+            cursor: pointer;
+        }
+
+        .ant-tabs-tab-active {
+            button {
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<div class="header-box"
+     [ngClass]="{
+       'has-menu': menuEntries?.length > 1,
+       'has-back-button': back.observed
+     }">
+    <header class="rs-l-flex rs-l-flex--center-y rs-s-margin--xl--bottom">
+        <div class="left-col rs-l-flex rs-l-flex--center-y rs-l-flex__item--stretch rs-no--break">
+            <button *ngIf="back.observed"
+                    nz-button nzType="text"
+                    class="back-button"
+                    (click)="back.emit()">
+                <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
+            </button>
+            <h1 class="rs-s-margin--sm--right rs-no--break">
+                {{ title }}
+            </h1>
+            <ng-container *ngIf="titleTmpl">
+                <ng-container *ngTemplateOutlet="titleTmpl"></ng-container>
+            </ng-container>
+        </div>
+
+        <div class="right-col statistics rs-l-flex rs-no--shrink rs-s-margin--xl--left">
+            <div *ngIf="actions.length > 0" class="actions rs-l-flex rs-l-flex--center">
+                <rs-ui-actions-button [item]="item" [actions]="actions" buttonType="buttonRow"></rs-ui-actions-button>
+            </div>
+        </div>
+    </header>
+
+    <div class="content rs-l-flex">
+        <div class="left-col">
+            <ng-content></ng-content>
+        </div>
+    </div>
+
+    <rs-ui-tab-bar-menu
+        [menuEntries]="menuEntries"
+        (activate)="activate.next($event)">
+    </rs-ui-tab-bar-menu>
+</div>

@@ -1,0 +1,236 @@
+// Breakpoint helper mixins
+
+@use '../config' as *;
+
+$rs-viewport-xs-range: (0, $rs-bp-xs-max);
+$rs-viewport-sm-range: ($rs-bp-sm-min, $rs-bp-sm-max);
+$rs-viewport-md-range: ($rs-bp-md-min, $rs-bp-md-max);
+$rs-viewport-lg-range: ($rs-bp-lg-min, $rs-bp-lg-max);
+$rs-viewport-xl-range: ($rs-bp-xl-min, $rs-bp-xl-max);
+
+@function -lower-viewport-bound($viewport-range) {
+    @if length($viewport-range) <= 0 {
+        @return 0;
+    }
+    @return nth($viewport-range, 1);
+}
+
+@function -upper-viewport-bound($viewport-range) {
+    @if length($viewport-range) < 2 {
+        @return 9999px;
+    }
+    @return nth($viewport-range, 2);
+}
+
+$-mq-screen: "only screen";
+$-mq-print: "only print";
+
+$-mq-viewport-xs-only: "#{$-mq-screen} and (max-width: #{-upper-viewport-bound($rs-viewport-xs-range)})";
+$-mq-viewport-xs-up: $-mq-screen;
+
+$-mq-viewport-sm-only: "#{$-mq-screen} and (min-width: #{-lower-viewport-bound($rs-viewport-sm-range)}) and (max-width: #{-upper-viewport-bound($rs-viewport-sm-range)})";
+$-mq-viewport-sm-up: "#{$-mq-screen} and (min-width: #{-lower-viewport-bound($rs-viewport-sm-range)})";
+
+$-mq-viewport-md-only: "#{$-mq-screen} and (min-width: #{-lower-viewport-bound($rs-viewport-md-range)}) and (max-width: #{-upper-viewport-bound($rs-viewport-md-range)})";
+$-mq-viewport-md-up: "#{$-mq-screen} and (min-width: #{-lower-viewport-bound($rs-viewport-md-range)})";
+
+$-mq-viewport-lg-only: "#{$-mq-screen} and (min-width: #{-lower-viewport-bound($rs-viewport-lg-range)}) and (max-width: #{-upper-viewport-bound($rs-viewport-lg-range)})";
+$-mq-viewport-lg-up: "#{$-mq-screen} and (min-width: #{-lower-viewport-bound($rs-viewport-lg-range)})";
+
+$-mq-viewport-xl-only: "#{$-mq-screen} and (min-width: #{-lower-viewport-bound($rs-viewport-xl-range)}) and (max-width: #{-upper-viewport-bound($rs-viewport-xl-range)})";
+$-mq-viewport-xl-up: "#{$-mq-screen} and (min-width: #{-lower-viewport-bound($rs-viewport-xl-range)})";
+
+@mixin rs-media($breakpoints...) {
+    @each $breakpoint in $breakpoints {
+        @if $breakpoint == "xs" {
+            @media #{$-mq-viewport-xs-only} {
+                @content;
+            }
+        } @else if $breakpoint == "xs-up" or $breakpoint == "*" {
+            @media #{$-mq-viewport-xs-up} {
+                @content;
+            }
+        } @else if $breakpoint == "sm" or $breakpoint == "*" {
+            @media #{$-mq-viewport-sm-only} {
+                @content;
+            }
+        } @else if $breakpoint == "sm-up" or $breakpoint == "*" {
+            @media #{$-mq-viewport-sm-up} {
+                @content;
+            }
+        } @else if $breakpoint == "md" or $breakpoint == "*" {
+            @media #{$-mq-viewport-md-only} {
+                @content;
+            }
+        } @else if $breakpoint == "md-up" or $breakpoint == "*" {
+            @media #{$-mq-viewport-md-up} {
+                @content;
+            }
+        } @else if $breakpoint == "lg" or $breakpoint == "*" {
+            @media #{$-mq-viewport-lg-only} {
+                @content;
+            }
+        } @else if $breakpoint == "lg-up" or $breakpoint == "*" {
+            @media #{$-mq-viewport-lg-up} {
+                @content;
+            }
+        } @else if $breakpoint == "xl" or $breakpoint == "*" {
+            @media #{$-mq-viewport-xl-only} {
+                @content;
+            }
+        } @else if $breakpoint == "xl-up" or $breakpoint == "*" {
+            @media #{$-mq-viewport-xl-up} {
+                @content;
+            }
+        }
+        // Compatibility
+        @else if $breakpoint == "s" {
+            @media #{$-mq-viewport-xs-only} {
+                @content;
+            }
+        } @else if $breakpoint == "s-up" {
+            @media #{$-mq-viewport-xs-up} {
+                @content;
+            }
+        } @else if $breakpoint == "m" {
+            @media #{$-mq-viewport-md-only} {
+                @content;
+            }
+        } @else if $breakpoint == "m-up" {
+            @media #{$-mq-viewport-md-up} {
+                @content;
+            }
+        } @else if $breakpoint == "l" {
+            @media #{$-mq-viewport-lg-only} {
+                @content;
+            }
+        } @else if $breakpoint == "l-up" {
+            @media #{$-mq-viewport-lg-up} {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin rs-media-param($param, $value) {
+    @if type-of($value) == number or type-of($value) == string or type-of($value) == color {
+        #{$param}: #{$value};
+    } @else if type-of($value) == list {
+        @if length($value) > 0{
+            #{$param}: #{$value};
+        }
+    } @else {
+
+        @if (map-has-key($value, 'xs')) {
+            @include rs-media(xs) {
+                #{$param}: #{map-get($value, 'xs')};
+            }
+        }
+
+        @if (map-has-key($value, 'xs-up')) {
+            @include rs-media(xs-up) {
+                #{$param}: #{map-get($value, 'xs-up')};
+            }
+        }
+
+        @if (map-has-key($value, 'sm')) {
+            @include rs-media(sm) {
+                #{$param}: #{map-get($value, 'sm')};
+            }
+        }
+
+        @if (map-has-key($value, 'sm-up')) {
+            @include rs-media(sm-up) {
+                #{$param}: #{map-get($value, 'sm-up')};
+            }
+        }
+
+        @if (map-has-key($value, 'md')) {
+            @include rs-media(md) {
+                #{$param}: #{map-get($value, 'md')};
+            }
+        }
+
+        @if (map-has-key($value, 'md-up')) {
+            @include rs-media(md-up) {
+                #{$param}: #{map-get($value, 'md-up')};
+            }
+        }
+
+        @if (map-has-key($value, 'lg')) {
+            @include rs-media(lg) {
+                #{$param}: #{map-get($value, 'lg')};
+            }
+        }
+
+        @if (map-has-key($value, 'lg-up')) {
+            @include rs-media(lg-up) {
+                #{$param}: #{map-get($value, 'lg-up')};
+            }
+        }
+
+        @if (map-has-key($value, 'xl')) {
+            @include rs-media(xl) {
+                #{$param}: #{map-get($value, 'xl')};
+            }
+        }
+    }
+}
+
+@mixin rs-responsive-param($param, $xs, $sm: $xs, $md: $sm, $lg: $md, $xl: $lg) {
+    @include rs-media(xs) {
+        #{$param}: #{$xs};
+    }
+
+    @include rs-media(sm) {
+        #{$param}: #{$sm};
+    }
+
+    @include rs-media(md) {
+        #{$param}: #{$md};
+    }
+
+    @include rs-media(lg) {
+        #{$param}: #{$lg};
+    }
+
+    @include rs-media(xl) {
+        #{$param}: #{$xl};
+    }
+}
+
+@mixin rs-mq-xs {
+    @media screen and (max-width: $rs-bp-xs-max) {
+        @content;
+    }
+}
+
+@mixin rs-mq-sm {
+    @media screen and (min-width: $rs-bp-sm-min) and (max-width: $rs-bp-sm-max) {
+        @content;
+    }
+}
+
+@mixin rs-mq-md {
+    @media screen and (min-width: $rs-bp-md-min) and (max-width: $rs-bp-md-max) {
+        @content;
+    }
+}
+
+@mixin rs-mq-lg {
+    @media screen and (min-width: $rs-bp-lg-min) and (max-width: $rs-bp-lg-max) {
+        @content;
+    }
+}
+
+@mixin rs-mq-xl {
+    @media screen and (min-width: $rs-bp-xl-min) and (max-width: $rs-bp-xl-max) {
+        @content;
+    }
+}
+
+@mixin rs-hide($breakpoints...) {
+    @include rs-media($breakpoints...) {
+        display: none;
+    }
+}

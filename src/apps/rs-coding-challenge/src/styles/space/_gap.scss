@@ -1,0 +1,41 @@
+@mixin gap-style($gap) {
+   gap: $gap;
+}
+
+.rs-s-gap {
+    &:not([hidden]) {
+        display: block;
+    }
+
+    &--xxs {
+        @include gap-style(var(--rs-s-xxs));
+    }
+
+    &--xs {
+        @include gap-style(var(--rs-s-xs));
+    }
+
+    &--sm {
+        @include gap-style(var(--rs-s-sm));
+    }
+
+    &--md {
+        @include gap-style(var(--rs-s-md));
+    }
+
+    &--lg {
+        @include gap-style(var(--rs-s-lg));
+    }
+
+    &--xl {
+        @include gap-style(var(--rs-s-xl));
+    }
+
+    &--xxl {
+        @include gap-style(var(--rs-s-xxl));
+    }
+
+    &--auto{
+        @include gap-style(auto);
+    }
+}

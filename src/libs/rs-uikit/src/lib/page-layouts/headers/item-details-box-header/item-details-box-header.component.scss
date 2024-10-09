@@ -1,0 +1,74 @@
+:host{
+    padding: 0 var(--rs-s-md);
+    margin: 0 calc(var(--rs-s-md) * -1);
+    background: var(--rs-c-gray-2);
+    margin-bottom: var(--rs-s-lg);
+    border-bottom: 1px solid var(--rs-c-gray-4);
+    display: block;
+}
+
+.header-box {
+    width: calc(100%);
+    padding-top: var(--rs-s-sm);
+
+    &.has-menu{
+        padding-bottom: 0;
+
+        rs-ui-tab-bar-menu{
+            display: block;
+        }
+    }
+
+    header{
+        .left-col{
+            h1 {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 0;
+
+                .icon{
+                    margin-right: var(--rs-s-xxs);
+                }
+            }
+        }
+    }
+
+    .content{
+        .left-col{
+            width: 100%;
+        }
+    }
+
+    rs-ui-tab-bar-menu{
+        display: none;
+    }
+
+    ::ng-deep{
+        section{
+            h2{
+                font-size: 20px;
+                margin-bottom: var(--rs-s-xxs);
+            }
+
+            p{
+                margin-bottom: var(--rs-s-md);
+            }
+        }
+
+        nz-tabs-nav{
+            margin-bottom: 0;
+
+            &:before{
+                border-bottom: none;
+            }
+        }
+
+        section + section{
+            margin-top: 32px;
+        }
+    }
+
+    rs-ui-radio-group-menu {
+        display: block;
+    }
+}

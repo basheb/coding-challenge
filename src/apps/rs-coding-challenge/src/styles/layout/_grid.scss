@@ -1,0 +1,55 @@
+.rs-l-grid {
+    display: grid !important;
+    grid-column-gap: var(--rs-s-sm);
+    grid-row-gap: var(--rs-s-sm);
+    grid-template-rows: repeat(auto-fit, 1fr);
+    width: 100%;
+
+    &--col-1 {
+        grid-template-columns: 1fr;
+    }
+
+    &--col-2 {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+
+        &.auto-width {
+            grid-template-columns: repeat(2, auto);
+        }
+    }
+
+    &--col-3 {
+        grid-template-columns: repeat(3, minmax(150px, 1fr));
+
+        &.auto-width {
+            grid-template-columns: repeat(3, auto);
+        }
+    }
+
+    &--col-4 {
+        grid-template-columns: repeat(4, minmax(150px, 1fr));
+
+        &.auto-width {
+            grid-template-columns: repeat(4, auto);
+        }
+    }
+
+    &--col-5 {
+        grid-template-columns: repeat(5, minmax(150px, 1fr));
+
+        &.auto-width {
+            grid-template-columns: repeat(5, auto);
+        }
+    }
+
+    &--col-30-70 {
+        grid-template-columns: calc(100% / 3) calc((100% / 3) * 2 - 20px)
+    }
+
+    &--col-70-30 {
+        grid-template-columns: calc((100% / 3) * 2) calc(100% / 3 - 20px)
+    }
+
+    &--key-value{
+        grid-template-columns: fit-content(30%) 1fr;
+    }
+}

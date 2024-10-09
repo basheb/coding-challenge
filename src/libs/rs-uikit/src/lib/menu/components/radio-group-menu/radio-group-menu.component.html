@@ -1,0 +1,10 @@
+<nz-radio-group [(ngModel)]="activeEntry" nzButtonStyle="outline" (ngModelChange)="activateMenuEntry($event)">
+    @for(entry of menuEntries; track entry.properties.id){
+        <label nz-radio-button [nzValue]="entry">
+            @if(entry.properties.icon){
+                <span nz-icon [nzType]="entry.properties.icon" nzTheme="outline"></span>
+            }
+            <ng-container *ngTemplateOutlet="entry.properties.templateRef"></ng-container>
+        </label>
+    }
+</nz-radio-group>

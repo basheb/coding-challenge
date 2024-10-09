@@ -1,0 +1,21 @@
+<a [routerLink]="!disableUrl ? entry.properties.url: undefined"
+   [ngClass]="{
+        'active': active || entry.isActive(activeUrl),
+        'upcoming-active': entry.isActive(upcomingUrl),
+        'active-sub-entry': !active && entry.hasActiveSubEntry(activeUrl),
+        'sub-entries': entry.hasSubEntries(),
+        'disabled': entry.properties.disabled
+   }">
+    <div class="entry rs-no--break">
+        <ng-container *ngIf="entry.properties.icon">
+            <span class="entry-icon icon"
+                  nz-icon
+                  [nzType]="entry.properties.icon"
+                  [nzTheme]="entry.properties.iconStyle || 'outline'">
+            </span>
+        </ng-container>
+        <label>
+            <ng-container *ngTemplateOutlet="entry.properties.templateRef"></ng-container>
+        </label>
+    </div>
+</a>

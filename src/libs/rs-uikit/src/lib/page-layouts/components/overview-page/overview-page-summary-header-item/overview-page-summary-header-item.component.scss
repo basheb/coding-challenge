@@ -1,0 +1,14 @@
+::ng-deep nz-statistic {
+    &:not(:last-child) {
+        margin-right: var(--rs-s-md);
+    }
+
+    .ant-select-selector {
+        height: inherit !important;
+
+        > *,
+        &:after {
+            line-height: 1.5715 !important;
+        }
+    }
+}

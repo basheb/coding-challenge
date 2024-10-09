@@ -1,0 +1,23 @@
+<div *ngIf="templates.get(LayoutComponentType.header)"
+     class="rs-s-margin--lg--bottom">
+    <ng-container *ngTemplateOutlet="templates.get(LayoutComponentType.header)"></ng-container>
+</div>
+
+<nz-layout style="background: transparent">
+    <nz-content class="main-column">
+        <section class="overview-content">
+            <!-- Main Content -->
+            <ng-container *ngIf="templates.get(LayoutComponentType.main)">
+                <ng-container *ngTemplateOutlet="templates.get(LayoutComponentType.main)"></ng-container>
+            </ng-container>
+        </section>
+    </nz-content>
+
+    <!-- Sidebar with multiple sections-->
+    <nz-sider *ngIf="templates.get(LayoutComponentType.sidebar)"
+              [nzWidth]="380" class="sidebar" [nzTheme]="'light'">
+        <div class="sidebar-sections">
+            <ng-container *ngTemplateOutlet="templates.get(LayoutComponentType.sidebar)"></ng-container>
+        </div>
+    </nz-sider>
+</nz-layout>

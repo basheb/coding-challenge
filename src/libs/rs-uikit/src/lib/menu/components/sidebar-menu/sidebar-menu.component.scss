@@ -1,0 +1,106 @@
+:host {
+    --entry-color: var(--rs-c-black);
+    --entry-active-color: var(--rs-c-primary);
+    --active-background: var(--rs-c-gray-2);
+    --active-child-background: var(--rs-c-primary-light);
+    --active-indicator-background: var(--rs-c-primary);
+    --active-indicator-boxshadow-color: var(--rs-c-gray-1);
+    --entry-border-radius: 8px;
+    --entry-active-border: 2px solid var(--active-indicator-background);
+    container-type: inline-size;
+    display: block;
+
+    .menu {
+        > ul > li{
+            &:not(:last-child) {
+                margin-bottom: 4px;
+            }
+
+            rs-ui-sidebar-menu-entry{
+                --border-radius: var(--entry-border-radius);
+                --active-border: var(--entry-active-border);
+            }
+        }
+
+        .dropdown-entries {
+            ul {
+                transform: translate(var(--rs-s-xs), calc(var(--rs-s-xs) * -1));
+                border-radius: var(--rs-border-radius);
+                width: calc(100% - var(--rs-s-md));
+                margin-top: var(--rs-s-sm);
+                margin-left: var(--rs-s-lg);
+                margin-bottom: calc(var(--rs-s-xs) * -1);
+            }
+
+            ul li {
+                margin: 0;
+                overflow: hidden;
+
+                ::ng-deep .entry {
+                    background: transparent;
+                    padding-left: calc(var(--rs-s-xs) - var(--rs-s-xs));
+                    padding-top: 4px;
+                    padding-bottom: 4px;
+                    border: none;
+                    margin-left: 0;
+
+                    &:hover label {
+                        text-decoration: underline;
+                    }
+                }
+
+                &.active {
+                    > ::ng-deep .entry {
+                        background: transparent;
+
+                        &:before {
+                            display: none;
+                        }
+
+                        a {
+                            font-weight: bold;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @container (width < 100px) {
+        .menu{
+
+            ul li {
+                text-align: center;
+
+                ::ng-deep .entry {
+                    padding-left: 0;
+                    padding-right: 0;
+                    text-overflow: unset;
+
+                    label{
+                        display: none;
+                    }
+
+                    .icon{
+                        margin-right: 0;
+                    }
+                }
+
+                .dropdown-entries{
+                    background: var(--active-child-background);
+                    margin-top: -20px;
+                    padding-top: 8px;
+                    font-weight: bolder;
+                    border-radius: 8px;
+
+                    ul{
+                        padding-left: 0;
+                        margin-left: 4px;
+                    }
+                }
+            }
+        }
+
+    }
+}

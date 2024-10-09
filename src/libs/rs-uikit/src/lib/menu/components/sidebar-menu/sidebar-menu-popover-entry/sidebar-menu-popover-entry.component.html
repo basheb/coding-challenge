@@ -1,0 +1,29 @@
+<rs-ui-popover-menu #popover placement="right" [disabled]="entry.properties.disabled" trigger="hover">
+    <rs-ui-sidebar-menu-entry
+        class="no-active-border"
+        [entry]="entry"
+        [active]="popover.visible || entry.hasActiveSubEntry(activeUrl)"
+        [disableUrl]="true"
+        [activeUrl]="activeUrl"
+        [upcomingUrl]="upcomingUrl">
+    </rs-ui-sidebar-menu-entry>
+
+    <ng-container *rsUiMenuEntry="{active: entry.isActive(activeUrl) && !entry.hasActiveSubEntry(activeUrl), url: entry.properties.url}">
+        <div class="entry rs-no--break">
+            <ng-container *ngIf="entry.properties.icon">
+                <span class="entry-icon icon"
+                      nz-icon
+                      [nzType]="entry.properties.icon"
+                      [nzTheme]="entry.properties.iconStyle || 'outline'">
+                </span>
+            </ng-container>
+            <label>
+                <ng-container *ngTemplateOutlet="entry.properties.templateRef"></ng-container>
+            </label>
+        </div>
+    </ng-container>
+
+    @for (subEntry of entry.properties.subEntries; track subEntry.properties.id) {
+        <ng-container *rsUiMenuEntry="subEntry.properties"></ng-container>
+    }
+</rs-ui-popover-menu>

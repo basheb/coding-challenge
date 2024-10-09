@@ -1,0 +1,57 @@
+@mixin padding-style($padding) {
+    &--top {
+        padding-top: $padding;
+    }
+
+    &--bottom {
+        padding-bottom: $padding;
+    }
+
+    &--left {
+        padding-left: $padding;
+    }
+
+    &--right {
+        padding-right: $padding;
+    }
+
+    &--x {
+        padding-left: $padding;
+        padding-right: $padding;
+    }
+
+    &--y {
+        padding-top: $padding;
+        padding-bottom: $padding;
+    }
+}
+
+.rs-s-padding {
+    &--xxs {
+        @include padding-style(var(--rs-s-xxs));
+    }
+
+    &--xs {
+        @include padding-style(var(--rs-s-xs));
+    }
+
+    &--sm {
+        @include padding-style(var(--rs-s-sm));
+    }
+
+    &--md {
+        @include padding-style(var(--rs-s-md));
+    }
+
+    &--lg {
+        @include padding-style(var(--rs-s-lg));
+    }
+
+    &--xl {
+        @include padding-style(var(--rs-s-xl));
+    }
+
+    &--xxl {
+        @include padding-style(var(--rs-s-xxl));
+    }
+}

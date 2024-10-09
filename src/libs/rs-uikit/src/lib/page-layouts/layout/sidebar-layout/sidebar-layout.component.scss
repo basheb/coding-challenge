@@ -1,0 +1,16 @@
+.sidebar{
+    margin: 0 var(--rs-s-sm);
+}
+
+.main-column{
+    padding: 0 var(--rs-s-sm) 0 var(--rs-s-lg);
+}
+
+
+::ng-deep{
+    .header-box{
+        nz-tabs-nav{
+            width: calc(100% - 476px);
+        }
+    }
+}

@@ -1,0 +1,43 @@
+::ng-deep .ant-page-header-compact .ant-page-header-heading {
+    flex-wrap: nowrap;
+}
+
+.header {
+    h1 {
+        margin: 0 var(--rs-s-sm) 0 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .item-type {
+        font-weight: normal;
+        font-size: medium;
+    }
+}
+
+.main-column {
+    min-width: 380px;
+}
+
+.sidebar {
+    background: transparent;
+    margin-left: 115px;
+    margin-right: 119px;
+}
+
+::ng-deep .summary-header {
+    rs-overview-page-summary-header-item {
+        display: block;
+
+        &:not(:last-child) {
+            margin-right: var(--rs-s-md)
+        }
+    }
+}
+
+::ng-deep .sidebar-sections {
+    > *:not(:last-child) {
+        margin-bottom: var(--rs-s-md);
+        display: block;
+    }
+}

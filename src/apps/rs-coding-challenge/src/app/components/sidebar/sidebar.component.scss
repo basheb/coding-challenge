@@ -1,0 +1,129 @@
+:host {
+    width: 100%;
+}
+
+.sidebar {
+    --hover-background: var(--rs-c-primary-light);
+
+    height: 100vh;
+    background: #fafafe;
+    border-right: 1px solid #efefef;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: inherit;
+    container-type: inline-size;
+    z-index: 999;
+
+    .station-selector {
+        padding: var(--rs-s-sm);
+
+        .wrapper {
+            padding: var(--rs-s-xxs);
+            border-radius: 8px;
+
+            &:hover,
+            &.is-active {
+                background: var(--hover-background);
+            }
+
+            .station-image {
+                border-radius: var(--rs-c-border-radius);
+                box-shadow: var(--rs-boxshadow-z1);
+                overflow: hidden;
+
+                img {
+                    height: 32px;
+                    aspect-ratio: 1;
+                }
+            }
+
+            .station-name {
+                font-weight: bold;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .menu-wrapper {
+        width: inherit;
+        padding: var(--rs-s-sm) var(--rs-s-sm) var(--rs-s-xs) var(--rs-s-sm);
+        flex-grow: 1;
+        max-height: calc(100dvh - 170px);
+        overflow: auto;
+    }
+
+    .add-shortcut {
+        margin-top: 16px;
+        padding: 4px;
+        border-radius: 8px;
+
+        &:hover,
+        &.is-active {
+            background: var(--hover-background);
+        }
+
+        .create-button {
+            position: relative;
+            text-align: left;
+            padding: 4px 8px;
+            color: var(--rs-c-primary);
+
+            span[nz-icon] {
+                display: inline-block;
+                margin-right: 8px;
+                font-size: 24px;
+            }
+        }
+    }
+
+    .profile-selector {
+        padding: 0 16px;
+
+        .wrapper {
+            padding: 4px;
+            border-radius: 8px;
+
+            &:hover,
+            &.is-active {
+                background: var(--hover-background);
+            }
+        }
+
+        .profile-image {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: var(--rs-boxshadow-z1);
+            border: 2px solid white;
+        }
+
+        .profile-info {
+            overflow: hidden;
+
+            .organisation {
+                img {
+                    width: 15px;
+                    aspect-ratio: 1;
+                }
+            }
+        }
+    }
+
+    .radiosphere {
+        background: var(--rs-c-gray-3);
+        padding: 8px 16px;
+        margin-top: 16px;
+
+        img {
+            height: 11px;
+        }
+    }
+
+    @container (width < 100px) {
+        .radiosphere {
+            display: none;
+        }
+    }
+}

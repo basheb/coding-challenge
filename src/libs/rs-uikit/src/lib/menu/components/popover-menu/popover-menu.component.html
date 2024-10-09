@@ -1,0 +1,88 @@
+<div nz-popover
+     [ngClass]="{'rs-utils--clickable': !disabled && menuEntries?.length > 1}"
+     [(nzPopoverVisible)]="visible"
+     [nzPopoverTrigger]="!disabled && menuEntries?.length > 1 ? trigger : null"
+     [nzPopoverContent]="contentTemplate"
+     [nzPopoverPlacement]="placement"
+     [nzPopoverBackdrop]="true"
+     (nzPopoverVisibleChange)="onVisibleChange()">
+    <ng-content></ng-content>
+</div>
+
+<ng-template #contentTemplate>
+    @if (menuEntries?.length) {
+        <ul nz-menu nzMode="vertical" style="margin: -16px">
+            @if (content) {
+                <li nz-menu-item>
+                    <ng-container *ngTemplateOutlet="content"></ng-container>
+                </li>
+            }
+
+            @for (entry of menuEntries; track entry.properties.id) {
+                @if (entry.hasSubEntries()) {
+                    <li nz-menu-item
+                        nz-popover
+                        nzPopoverTrigger="hover"
+                        class="has-children"
+                        [nzPopoverContent]="subContentTemplate"
+                        [nzPopoverPlacement]="placement">
+                        <a [routerLink]="entry.properties.url">
+                            @if (entry.properties.icon) {
+                                <span nz-icon
+                                      [nzType]="entry.properties.icon"
+                                      [nzTheme]="entry.properties.iconStyle || 'outline'">
+                                </span>
+                            }
+
+                            <label>
+                                <ng-container *ngTemplateOutlet="entry.properties.templateRef"></ng-container>
+                            </label>
+
+                            <span class="more-chevron" nz-icon nzType="caret-right" nzTheme="outline"></span>
+                        </a>
+                    </li>
+
+                    <ng-template #subContentTemplate>
+                        <ul nz-menu nzMode="vertical" style="margin: -16px">
+                            @for (subEntry of entry.properties.subEntries; track subEntry.properties.id) {
+                                <li nz-menu-item (click)="onMenuItemClick(subEntry)" [nzSelected]="entry.isActive(activeUrl)">
+                                    <a [routerLink]="subEntry.properties.url">
+                                        @if (subEntry.properties.icon) {
+                                            <span nz-icon
+                                                  [nzType]="subEntry.properties.icon"
+                                                  [nzTheme]="subEntry.properties.iconStyle || 'outline'">
+                                            </span>
+                                        }
+
+                                        <label>
+                                            <ng-container
+                                                *ngTemplateOutlet="subEntry.properties.templateRef"></ng-container>
+                                        </label>
+                                        {{entry.properties.active}}
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </ng-template>
+                } @else {
+                    <li nz-menu-item
+                        [nzSelected]="entry.isActive(activeUrl)"
+                        (click)="onMenuItemClick(entry)">
+                        <a [routerLink]="entry.properties.url">
+                            @if (entry.properties.icon) {
+                                <span nz-icon
+                                      [nzType]="entry.properties.icon"
+                                      [nzTheme]="entry.properties.iconStyle || 'outline'">
+                                </span>
+                            }
+
+                            <label>
+                                <ng-container *ngTemplateOutlet="entry.properties.templateRef"></ng-container>
+                            </label>
+                        </a>
+                    </li>
+                }
+            }
+        </ul>
+    }
+</ng-template>

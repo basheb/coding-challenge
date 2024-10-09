@@ -1,0 +1,101 @@
+:host{
+    --border-radius: 8px;
+    --active-border: none
+}
+
+a {
+    position: relative;
+
+    ::ng-deep .entry {
+        padding: var(--rs-s-xs) var(--rs-s-sm) var(--rs-s-xs) var(--rs-s-sm);
+        position: relative;
+        color: var(--entry-color);
+        border-radius: var(--border-radius);
+
+        > .icon {
+            margin-right: var(--rs-s-xs);
+            margin-bottom: 2px;
+        }
+
+        &:hover {
+            background: var(--active-background);
+        }
+
+        a {
+            display: inline-block;
+            margin-left: 4px;
+        }
+
+        a,
+        div {
+            color: inherit;
+
+            > .icon {
+                color: inherit;
+                margin-right: var(--rs-s-xs);
+            }
+        }
+
+        label {
+            display: inline-block;
+            cursor: pointer;
+        }
+    }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    &.active {
+        ::ng-deep .entry {
+            background: var(--active-background);
+        }
+    }
+
+    &.active,
+    &.active-sub-entry {
+        > ::ng-deep .entry {
+            color: var(--entry-active-color);
+        }
+    }
+
+    &.upcoming-active {
+        background: var(--rs-c-primary-lightest);
+
+        > ::ng-deep .entry {
+            a {
+                font-weight: bold;
+                text-decoration: none;
+            }
+        }
+    }
+
+    &.active:not(.active-sub-entry) {
+        > ::ng-deep .entry {
+            border: 1px solid transparent; // This is a safari hack because there is a border artifact on the right side
+            border-left: var(--active-border);
+            margin-left: -2px;
+            font-weight: bold;
+
+            color: var(--entry-active-color);
+
+            a {
+                font-weight: bold;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+:host {
+    &.no-active-border {
+        a.active {
+            ::ng-deep .entry {
+                & {
+                    border-left: none;
+                }
+            }
+        }
+    }
+}

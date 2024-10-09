@@ -1,0 +1,7 @@
+@if (templates.get(LayoutComponentType.header)) {
+    <ng-container *ngTemplateOutlet="templates.get(LayoutComponentType.header)"></ng-container>
+}
+
+<div class="main-content">
+    <ng-container *ngTemplateOutlet="templates.get(LayoutComponentType.main)"></ng-container>
+</div>

@@ -1,0 +1,30 @@
+.rs-no {
+    &--list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &--break {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &--select,
+    &--select * {
+        user-select: none;
+    }
+
+    &--margin{
+        margin: 0;
+    }
+
+    &--padding{
+        padding: 0;
+    }
+
+    &--shrink{
+        flex-shrink: 0;
+    }
+}

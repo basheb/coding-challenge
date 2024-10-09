@@ -1,0 +1,65 @@
+@mixin margin-style($margin) {
+    &--top {
+        margin-top: $margin;
+    }
+
+    &--bottom {
+        margin-bottom: $margin;
+    }
+
+    &--left {
+        margin-left: $margin;
+    }
+
+    &--right {
+        margin-right: $margin;
+    }
+
+    &--x {
+        margin-left: $margin;
+        margin-right: $margin;
+    }
+
+    &--y {
+        margin-top: $margin;
+        margin-bottom: $margin;
+    }
+}
+
+.rs-s-margin {
+    &:not([hidden]) {
+        display: block;
+    }
+
+    &--xxs {
+        @include margin-style(var(--rs-s-xxs));
+    }
+
+    &--xs {
+        @include margin-style(var(--rs-s-xs));
+    }
+
+    &--sm {
+        @include margin-style(var(--rs-s-sm));
+    }
+
+    &--md {
+        @include margin-style(var(--rs-s-md));
+    }
+
+    &--lg {
+        @include margin-style(var(--rs-s-lg));
+    }
+
+    &--xl {
+        @include margin-style(var(--rs-s-xl));
+    }
+
+    &--xxl {
+        @include margin-style(var(--rs-s-xxl));
+    }
+
+    &--auto{
+        @include margin-style(auto);
+    }
+}

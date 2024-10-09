@@ -1,0 +1,45 @@
+{
+  "type": "event",
+  "classId": "37009d2a-66a7-4bf0-bccb-3eb7a43da6a7",
+  "owner": "urn:post:6b918865-4f37-4a11-9487-323ad7bd2b4b",
+  "attributes": {
+    "main": {
+      "elements": [
+        {
+          "elementId": "1",
+          "componentType": "box",
+          "displayName": "Box Element 1",
+          "style": {
+            "corners": [
+              0, 10, 20, 30
+            ]
+          }
+        },
+        {
+          "elementId": "2",
+          "componentType": "box",
+          "displayName": "Box Element 2",
+          "style": {
+            "corners": [
+              30, 30, 30, 30
+            ]
+          }
+        },
+        {
+          "elementId": "3",
+          "componentType": "box",
+          "displayName": "Box Element 3",
+          "style": {
+            "corners": [
+              0, 0, 0, 0
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "updated": "2024-07-18T07:39:03.005262Z",
+  "version": null,
+  "published": null
+}
+

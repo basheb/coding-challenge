@@ -1,0 +1,90 @@
+<div class="sidebar">
+  <div class="station-selector">
+    <rs-ui-popover-menu placement="rightTop" #stationSelector>
+      <div class="wrapper rs-l-flex rs-l-flex--center-y" [ngClass]="{'is-active': stationSelector.visible}">
+        <div class="station-image rs-s-margin--xs--right">
+          <img
+            src="https://cdn.radiosphere.io/images/1588cd9c-9f16-4323-bf8d-7bac3c9caa2c?blocking=true&type=tiny">
+        </div>
+        <div class="station-name rs-l-flex__item--stretch">FluxMusic</div>
+        <span nz-icon nzType="caret-right" nzTheme="fill" #ref></span>
+      </div>
+
+      <ng-container *rsUiMenuEntry="{url: ['/start'], activeUrls: ['start*'], icon: 'home'}">
+        Home
+      </ng-container>
+    </rs-ui-popover-menu>
+  </div>
+
+  <div class="menu-wrapper">
+    <rs-ui-sidebar-menu class="menu" menuStyle="popover">
+      <ng-container *rsUiMenuEntry="{url: ['/start'], activeUrls: ['start*'], icon: 'home', iconStyle: 'fill'}">
+        Home
+      </ng-container>
+
+      <rs-ui-popover-menu placement="right" #createMenu [trigger]="'hover'">
+        <div class="add-shortcut" [ngClass]="{'is-active': createMenu.visible}">
+
+          <div class="create-button rs-l-flex rs-l-flex--center-y">
+            <span nz-icon nzType="plus-circle" nzTheme="fill"></span>
+            <label>Create</label>
+          </div>
+
+        </div>
+
+        <ng-container *rsUiMenuEntry="{icon: 'file-add'}">
+          Post
+        </ng-container>
+
+        <ng-container *rsUiMenuEntry="{icon: 'read'}">
+          Media
+        </ng-container>
+
+        <ng-container *rsUiMenuEntry="{icon: 'book'}">
+          Group
+        </ng-container>
+
+        <ng-container *rsUiMenuEntry="{icon: 'thunderbolt'}">
+          Campaign
+        </ng-container>
+      </rs-ui-popover-menu>
+    </rs-ui-sidebar-menu>
+  </div>
+
+  <div class="footer">
+
+    <div class="profile-selector">
+      <rs-ui-popover-menu placement="rightBottom" #userMenu>
+        <div class="wrapper rs-l-flex rs-l-flex--center-y" [ngClass]="{'is-active': userMenu.visible}">
+          <div class="profile-image rs-no--shrink rs-s-margin--xs--right rs-l-flex rs-l-flex--center">
+            <span nz-icon nzType="smile" nzTheme="outline" style="font-size: 24px"></span>
+          </div>
+          <div class="profile-info rs-l-flex__item--stretch">
+            <div class="user-name rs-no--break">
+              Test Person
+            </div>
+            <div class="organisation rs-text--muted rs-l-flex rs-l-flex--center-y">
+              <img
+                src="https://cdn.radiosphere.io/images/1588cd9c-9f16-4323-bf8d-7bac3c9caa2c?blocking=true&type=tiny"
+                class="rs-s-margin--xxs--right">
+              FluxMusic
+            </div>
+          </div>
+          <span nz-icon nzType="caret-right" nzTheme="outline"></span>
+        </div>
+
+        <ng-container *rsUiMenuEntry="{url: ['/start'], icon: 'user'}">
+          Profile
+        </ng-container>
+
+        <ng-container *rsUiMenuEntry="{url: ['/start'], icon: 'logout'}">
+          Logout
+        </ng-container>
+      </rs-ui-popover-menu>
+    </div>
+
+    <div class="radiosphere rs-text--smaller">
+      Powered by <img src="/svg/logo.svg"> • v12.0.0
+    </div>
+  </div>
+</div>

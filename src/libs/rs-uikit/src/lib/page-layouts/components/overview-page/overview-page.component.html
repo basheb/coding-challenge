@@ -1,0 +1,61 @@
+<nz-space nzDirection="vertical" nzSize="middle">
+    <nz-page-header (nzBack)="back.emit()"
+                    class="rs-s-margin--md--bottom"
+                    nzBackIcon="arrow-left">
+
+        <nz-page-header-title>
+            <!-- Overview Title with optional add on-->
+            <div class="rs-l-flex rs-l-flex--center-y header">
+                <h1>{{title}}</h1>
+                <div class="text-mute item-type rs-s-margin--sm--right">{{itemType}}</div>
+                <ng-container *ngIf="titleAddOn">
+                    <ng-container *ngTemplateOutlet="titleAddOn"></ng-container>
+                </ng-container>
+            </div>
+        </nz-page-header-title>
+
+        <nz-page-header-extra>
+            <!-- Overview action button -->
+            <rs-ui-actions-button *ngIf="actions.length > 0"
+                                    buttonType="buttonRow">
+                <ng-container *ngFor="let action of actions">
+                    <ng-container *rsItemAction="{type: action.type, disabled: action.disabled}">
+                        <ng-container *ngTemplateOutlet="action.template"></ng-container>
+                    </ng-container>
+                </ng-container>
+            </rs-ui-actions-button>
+        </nz-page-header-extra>
+
+    </nz-page-header>
+
+    <nz-layout>
+        <nz-content class="main-colum">
+            <section class="title-section rs-s-margin--lg--bottom">
+                <h1>Overview</h1>
+                <p class="text-mute">Here are some attributes from your {{itemType}}.</p>
+            </section>
+
+            <section *ngIf="summaryHeader"
+                     class="summary-header rs-s-margin--lg--bottom">
+                <div class="rs-l-flex rs-l-flex--center-y">
+                    <!-- Registered Summary Content -->
+                    <ng-container *ngTemplateOutlet="summaryHeader"></ng-container>
+                </div>
+            </section>
+
+            <section class="overview-content">
+                <!-- Main Content -->
+                <ng-content></ng-content>
+            </section>
+        </nz-content>
+
+        <!-- Sidebar with multiple sections-->
+        <nz-sider [nzWidth]="345" class="sidebar">
+            <div class="sidebar-sections">
+                <ng-container *ngFor="let sidebarActionTemplate of sidebarSectionTemplates">
+                    <ng-container *ngTemplateOutlet="sidebarActionTemplate"></ng-container>
+                </ng-container>
+            </div>
+        </nz-sider>
+    </nz-layout>
+</nz-space>
