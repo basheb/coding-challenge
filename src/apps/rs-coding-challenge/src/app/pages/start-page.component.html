@@ -39,9 +39,9 @@
           @if (activeElement()) {
             {{ activeElement().displayName }}
             {{ activeElement().style.corners | json }}
-            <app-box-component
+            <app-corner-box
               [ngModel]="activeElement().style.corners">
-            </app-box-component>
+            </app-corner-box>
           }
         </div>
       </div>

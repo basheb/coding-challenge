@@ -135,7 +135,7 @@ export interface ElementStyle {
     type: string;
     color: string;
   };
-  corners: [string, string, string, string];
+  corners: [number, number, number, number];
 }
 
 export interface ContentGraphCronCondition {

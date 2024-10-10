@@ -21,25 +21,25 @@ import {
 export type Corners = [number, number, number, number];
 
 @Component({
-  selector: 'app-box-component',
+  selector: 'app-corner-box',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './box-component.component.html',
-  styleUrl: './box-component.component.css',
+  templateUrl: './corner-box.component.html',
+  styleUrl: './corner-box.component.css',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => BoxComponentComponent),
+      useExisting: forwardRef(() => CornerBoxComponent),
       multi: true,
     },
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => BoxComponentComponent),
+      useExisting: forwardRef(() => CornerBoxComponent),
       multi: true,
     },
   ],
 })
-export class BoxComponentComponent<TCorners extends Corners>
+export class CornerBoxComponent<TCorners extends Corners>
   implements ControlValueAccessor, Validator
 {
   public disabled: ModelSignal<boolean> = model(false);

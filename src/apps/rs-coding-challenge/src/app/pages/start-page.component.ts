@@ -11,7 +11,7 @@ import {
   MainContentRegistrarDirective,
 } from '@rs/uikit';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
-import { BoxComponentComponent } from '../components/box-component/box-component.component';
+import { CornerBoxComponent, Corners } from '../components/corner-box/corner-box.component';
 import { ContentGraph, ContentGraphElement } from '../content-graph/interface';
 import { ContentGraphApi } from '../services/content-graph.api';
 
@@ -30,7 +30,7 @@ export interface StartPageData {
     HeaderRegistrarDirective,
     ActionDirective,
     NzIconDirective,
-    BoxComponentComponent,
+    CornerBoxComponent,
     FormsModule,
   ],
   templateUrl: './start-page.component.html',

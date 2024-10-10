@@ -2,7 +2,9 @@
   "name": "@rs-coding-challenge/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx run rs-coding-challenge:serve:development"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",
