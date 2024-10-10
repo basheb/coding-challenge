@@ -12,6 +12,7 @@ import {
 } from '@rs/uikit';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { CornerBoxComponent, Corners } from '../components/corner-box/corner-box.component';
+import { RadiusFormComponent } from '../components/shared/radius-form.component';
 import { ContentGraph, ContentGraphElement } from '../content-graph/interface';
 import { ContentGraphApi } from '../services/content-graph.api';
 
@@ -32,6 +33,7 @@ export interface StartPageData {
     NzIconDirective,
     CornerBoxComponent,
     FormsModule,
+    RadiusFormComponent,
   ],
   templateUrl: './start-page.component.html',
   styleUrl: './start-page.component.css',
@@ -44,8 +46,9 @@ export class StartPageComponent implements OnInit {
   protected contentGraph: WritableSignal<ContentGraph> = signal(undefined);
   protected rawPreview: Signal<string> = computed(() => {
     return JSON.stringify(this.contentGraph(), undefined, 2);
-  })
-  protected activeElement: WritableSignal<ContentGraphElement> = signal(undefined);
+  });
+  protected activeElement: WritableSignal<ContentGraphElement> =
+    signal(undefined);
 
   protected save: () => void = () => {
     this.contentGraphApi.saveContentGraph(this.contentGraph()).subscribe();
