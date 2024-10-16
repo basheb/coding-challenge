@@ -1,7 +1,3 @@
-import { CommonModule } from '@angular/common';
-import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import {
   ActionDirective,
   ActionType,
@@ -10,11 +6,25 @@ import {
   HeaderRegistrarDirective,
   MainContentRegistrarDirective,
 } from '@rs/uikit';
-import { NzIconDirective } from 'ng-zorro-antd/icon';
-import { CornerBoxComponent, Corners } from '../components/corner-box/corner-box.component';
-import { RadiusFormComponent } from '../components/shared/radius-form.component';
+import {
+  Component,
+  OnInit,
+  Signal,
+  WritableSignal,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { ContentGraph, ContentGraphElement } from '../content-graph/interface';
+import { RadiusFormData, Radiuses } from '../shared/radius-form/interface';
+
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { ContentGraphApi } from '../services/content-graph.api';
+import { CornerBoxComponent } from '../components/corner-box/corner-box.component';
+import { FormsModule } from '@angular/forms';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { RadiusFormComponent } from '../shared/radius-form/radius-form.component';
 
 export interface StartPageData {
   contentGraph: ContentGraph;
@@ -56,6 +66,26 @@ export class StartPageComponent implements OnInit {
   protected deleteContentGraph: () => void = () => {
     this.contentGraphApi.deleteContentGraph().subscribe();
   };
+  protected isFormDataInvalid: WritableSignal<boolean> = signal(true);
+
+  onRadiusUpdated(radiusData: RadiusFormData) {
+    this.updateActiveElementRadius(radiusData.values);
+    this.isFormDataInvalid.set(!radiusData.isValid);
+  }
+
+  // Update the corners of the active element
+  private updateActiveElementRadius(values: Radiuses): void {
+    const element = this.activeElement();
+    if (element) {
+      element.style.corners = [
+        values.topLeft,
+        values.topRight,
+        values.bottomRight,
+        values.bottomLeft,
+      ];
+      this.activeElement.set(element);
+    }
+  }
 
   ngOnInit(): void {
     this.route.data.subscribe((data) => this.setPageData(data.data));
