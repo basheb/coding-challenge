@@ -15,7 +15,7 @@ import {
 } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
-import { ContentGraphElement } from '../../content-graph/interface';
+import { ContentGraphElement } from '../../../content-graph/interface';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { RadiusFormData } from './interface';
 import { Subscription } from 'rxjs';

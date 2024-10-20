@@ -3,7 +3,7 @@
     <div class="rs-l-flex">
       <div class="rs-l-grid rs-l-grid--col-2 rs-s-gap--lg">
         <ng-container *ngFor="let corner of corners">
-          <div>
+          <div class="input-container">
             <span nz-icon [nzType]="corner.icon" nzTheme="outline"></span>
             <input
               type="number"
@@ -27,8 +27,18 @@
         </ng-container>
       </div>
       <div class="rs-l-flex__item--center-y">
-        <button [class.active]="linked" type="button" (click)="toggleLink()">
-          <span nz-icon nzType="link" nzTheme="outline"></span>
+        <button
+          [class.active]="linked"
+          class="rs-l-flex link-button"
+          type="button"
+          (click)="toggleLink()"
+        >
+          <span
+            class="rs-l-flex__item--center-y rs-l-flex__item--center-x"
+            nz-icon
+            nzType="link"
+            nzTheme="outline"
+          ></span>
         </button>
       </div>
     </div>

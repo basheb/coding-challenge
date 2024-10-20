@@ -16,7 +16,10 @@ import {
   signal,
 } from '@angular/core';
 import { ContentGraph, ContentGraphElement } from '../content-graph/interface';
-import { RadiusFormData, Radiuses } from '../shared/radius-form/interface';
+import {
+  RadiusFormData,
+  Radiuses,
+} from '../components/shared/radius-form/interface';
 
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -24,7 +27,7 @@ import { ContentGraphApi } from '../services/content-graph.api';
 import { CornerBoxComponent } from '../components/corner-box/corner-box.component';
 import { FormsModule } from '@angular/forms';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
-import { RadiusFormComponent } from '../shared/radius-form/radius-form.component';
+import { RadiusFormComponent } from '../components/shared/radius-form/radius-form.component';
 
 export interface StartPageData {
   contentGraph: ContentGraph;
